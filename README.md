@@ -46,4 +46,29 @@ On the next step, you can use the controls to adjust the smoothing parameters (w
 ### Figure 4 - Example of smoothing underfit.
 <img width="1728" alt="Знімок екрана 2025-02-17 о 15 52 04" src="https://github.com/user-attachments/assets/b9db4fe3-99c8-4356-a28e-c1260de83146" />
 
+On the next step, start (Figures 5-6), elastic limit (Figures 7-8), and end (Figures 9-10) points for the material's elongation-force curves should be defined.
+
+### Figure 5 - Pop-up window informing introduction of start point of an elongation-force curve.
+<img width="1728" alt="Знімок екрана 2025-02-17 о 15 52 14" src="https://github.com/user-attachments/assets/00d5151c-54de-496c-8740-6588e9394212" />
+
+
+### Figure 6 - Elongation-force curve with starting point defined.
+<img width="1728" alt="Знімок екрана 2025-02-17 о 15 52 33" src="https://github.com/user-attachments/assets/8f8b416d-a81a-48a7-af44-06de791cc536" />
+
+### Figure 7 - Pop-up window informing introduction of elastic limit point of an elongation-force curve.
+<img width="1728" alt="Знімок екрана 2025-02-17 о 15 52 38" src="https://github.com/user-attachments/assets/ae9d5770-c09c-415b-8896-519d2a416fe4" />
+
+
+### Figure 8 - Elongation-force curve with elastic limit point defined.
+<img width="1728" alt="Знімок екрана 2025-02-17 о 15 52 47" src="https://github.com/user-attachments/assets/0c9dc515-1781-4d61-a36e-ccf35b0a9c21" />
+
+
+### Figure 9 - Pop-up window informing introduction of an end point of an elongation-force curve.
+<img width="1728" alt="Знімок екрана 2025-02-17 о 15 52 47" src="https://github.com/user-attachments/assets/69263759-8af5-430d-846d-6ba35df8af06" />
+
+
+### Figure 10 - Elongation-force curve with an end point defined.
+<img width="1728" alt="Знімок екрана 2025-02-17 о 15 52 58" src="https://github.com/user-attachments/assets/d22625cf-decc-4bd0-bd15-2f2fa7ee508c" />
+
+
 
