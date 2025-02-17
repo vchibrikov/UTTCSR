@@ -16,7 +16,7 @@ results_list = []
 def load_mtr_file(file_path):
     try:
         # Load the data using a comma delimiter, and skip metadata rows
-        data = pd.read_csv(file_path, delimiter=",", skiprows=19)  # Skip first 19 metadata rows
+        data = pd.read_csv(file_path, delimiter = ",", skiprows = 19)  # Skip first 19 metadata rows
         
         # Clean up column names by stripping any extra spaces and handling special characters
         data.columns = [col.strip().replace('"', '') for col in data.columns]
@@ -27,8 +27,8 @@ def load_mtr_file(file_path):
         return None
 
 # Function to calculate smoothing using Savitzky-Golay filter
-def apply_smoothing(elongation, force, window_length=51, polyorder=3):
-    smoothed_force = savgol_filter(force, window_length=window_length, polyorder=polyorder)
+def apply_smoothing(elongation, force, window_length = 51, polyorder = 3):
+    smoothed_force = savgol_filter(force, window_length = window_length, polyorder = polyorder)
     return smoothed_force
 
 def write_to_excel(data):
@@ -82,77 +82,77 @@ class MaterialTestingApp:
 
         # Create a frame for the plot
         self.plot_frame = tk.Frame(self.root)
-        self.plot_frame.grid(row=0, column=0, padx=(10, 0), pady=(10, 10))
+        self.plot_frame.grid(row = 0, column = 0, padx = (10, 0), pady = (10, 10))
 
         # Create a frame for the sliders and checkbuttons
         self.control_frame = tk.Frame(self.root)
-        self.control_frame.grid(row=0, column=1, padx=(10, 10), pady=(10, 5), sticky="n")
+        self.control_frame.grid(row = 0, column = 1, padx = (10, 10), pady = (10, 5), sticky = "n")
 
         # Initially set the width of the control frame to 15% of the plot's width
         self.control_frame_width = int(self.root.winfo_width() * 0.15)
-        self.control_frame.config(width=self.control_frame_width)
+        self.control_frame.config(width = self.control_frame_width)
         
         # Configure the grid columns to allow dynamic resizing
-        self.root.grid_columnconfigure(0, weight=1)  # Allow plot area to take up remaining space
-        self.root.grid_columnconfigure(1, weight=0)  # Control frame gets fixed width
+        self.root.grid_columnconfigure(0, weight = 1)  # Allow plot area to take up remaining space
+        self.root.grid_columnconfigure(1, weight = 0)  # Control frame gets fixed width
 
         # Plot the original data
-        self.fig, self.ax = plt.subplots(figsize=(7.5, 4.5))
-        self.ax.plot(self.elongation, self.force, label="Original", color="blue")
+        self.fig, self.ax = plt.subplots(figsize = (7.5, 4.5))
+        self.ax.plot(self.elongation, self.force, label = "Original", color = "blue")
         self.ax.set_xlabel("Elongation (mm)")
         self.ax.set_ylabel("Force (N)")
         self.ax.legend()
 
         # Embed the plot into Tkinter
-        self.canvas = FigureCanvasTkAgg(self.fig, master=self.plot_frame)
+        self.canvas = FigureCanvasTkAgg(self.fig, master = self.plot_frame)
         self.canvas.get_tk_widget().pack()
 
         # Smoothing parameter controls
-        self.window_label = tk.Label(self.control_frame, text="Window length", anchor="center")
-        self.window_label.pack(pady=(0, 0), fill="x", expand=True)
+        self.window_label = tk.Label(self.control_frame, text = "Window length", anchor = "center")
+        self.window_label.pack(pady = (0, 0), fill = "x", expand = True)
 
-        self.window_slider = tk.Scale(self.control_frame, from_=1, to_=200, orient="horizontal", command=self.update_plot)
+        self.window_slider = tk.Scale(self.control_frame, from_ = 1, to_ = 200, orient = "horizontal", command = self.update_plot)
         self.window_slider.set(self.window_length)
-        self.window_slider.pack(pady=(0, 10), fill="x", expand=True)
+        self.window_slider.pack(pady = (0, 10), fill = "x", expand = True)
 
-        self.poly_label = tk.Label(self.control_frame, text="Polyorder", anchor="center")
-        self.poly_label.pack(pady=(0, 0), fill="x", expand=True)
+        self.poly_label = tk.Label(self.control_frame, text = "Polyorder", anchor = "center")
+        self.poly_label.pack(pady = (0, 0), fill = "x", expand = True)
 
-        self.poly_slider = tk.Scale(self.control_frame, from_=0, to_=10, orient="horizontal", command=self.update_plot)
+        self.poly_slider = tk.Scale(self.control_frame, from_  =0, to_ = 10, orient = "horizontal", command = self.update_plot)
         self.poly_slider.set(self.polyorder)
-        self.poly_slider.pack(pady=(0, 10), fill="x", expand=True)
+        self.poly_slider.pack(pady = (0, 10), fill = "x", expand = True)
 
         # Create buttons to define points
-        self.start_button = tk.Button(self.control_frame, text="Define start", command=self.define_start)
-        self.start_button.pack(pady=5, fill="x")
+        self.start_button = tk.Button(self.control_frame, text = "Define start", command = self.define_start)
+        self.start_button.pack(pady = 5, fill = "x")
 
-        self.elastic_button = tk.Button(self.control_frame, text="Define elastic limit", command=self.define_elastic_limit)
-        self.elastic_button.pack(pady=5, fill="x")
+        self.elastic_button = tk.Button(self.control_frame, text = "Define elastic limit", command = self.define_elastic_limit)
+        self.elastic_button.pack(pady = 5, fill = "x")
 
         self.end_button = tk.Button(self.control_frame, text="Define end", command=self.define_end)
         self.end_button.pack(pady=5, fill="x")
 
         # Calculate button
-        self.calculate_button = tk.Button(self.control_frame, text="Calculate", command=self.calculate_mechanical_properties)
-        self.calculate_button.pack(pady=5, fill="x")
+        self.calculate_button = tk.Button(self.control_frame, text = "Calculate", command = self.calculate_mechanical_properties)
+        self.calculate_button.pack(pady = 5, fill = "x")
 
         # Buttons for Next and Previous curve
-        self.prev_button = tk.Button(self.control_frame, text="Previous", command=self.previous_curve)
-        self.prev_button.pack(pady=5, fill="x")
+        self.prev_button = tk.Button(self.control_frame, text = "Previous", command = self.previous_curve)
+        self.prev_button.pack(pady = 5, fill="x")
 
-        self.next_button = tk.Button(self.control_frame, text="Next", command=self.next_curve)
-        self.next_button.pack(pady=5, fill="x")
+        self.next_button = tk.Button(self.control_frame, text = "Next", command = self.next_curve)
+        self.next_button.pack(pady = 5, fill = "x")
 
         # Checkboxes for toggling visibility of curves
-        self.show_original = tk.BooleanVar(value=True)
-        self.show_smoothed = tk.BooleanVar(value=True)
+        self.show_original = tk.BooleanVar(value = True)
+        self.show_smoothed = tk.BooleanVar(value = True)
 
         # Create checkbuttons and align them to the left
-        self.original_checkbox = tk.Checkbutton(self.control_frame, text="Plot original data", variable=self.show_original, command=self.update_plot)
-        self.original_checkbox.pack(pady=(0, 0), anchor="w", padx=0)
+        self.original_checkbox = tk.Checkbutton(self.control_frame, text = "Plot original data", variable = self.show_original, command = self.update_plot)
+        self.original_checkbox.pack(pady = (0, 0), anchor = "w", padx = 0)
 
-        self.smoothed_checkbox = tk.Checkbutton(self.control_frame, text="Plot smoothed data", variable=self.show_smoothed, command=self.update_plot)
-        self.smoothed_checkbox.pack(pady=(0, 0), anchor="w", padx=0)
+        self.smoothed_checkbox = tk.Checkbutton(self.control_frame, text = "Plot smoothed data", variable = self.show_smoothed, command = self.update_plot)
+        self.smoothed_checkbox.pack(pady = (0, 0), anchor = "w", padx = 0)
 
         # Bind click event to the plot
         self.canvas.mpl_connect("button_press_event", self.on_click)
@@ -180,13 +180,13 @@ class MaterialTestingApp:
         # Store the original x value (elongation) and the new smoothed y value (force)
         if self.start_point is None:
             self.start_point = (self.elongation.iloc[closest_idx], smoothed_force_at_x)  # Use smoothed force value
-            self.ax.plot(self.start_point[0], self.start_point[1], 'go', label="Start point")
+            self.ax.plot(self.start_point[0], self.start_point[1], 'go', label = "Start point")
         elif self.elastic_limit_point is None:
             self.elastic_limit_point = (self.elongation.iloc[closest_idx], smoothed_force_at_x)  # Use smoothed force value
-            self.ax.plot(self.elastic_limit_point[0], self.elastic_limit_point[1], 'yo', label="Elastic limit point")
+            self.ax.plot(self.elastic_limit_point[0], self.elastic_limit_point[1], 'yo', label = "Elastic limit point")
         elif self.end_point is None:
             self.end_point = (self.elongation.iloc[closest_idx], smoothed_force_at_x)  # Use smoothed force value
-            self.ax.plot(self.end_point[0], self.end_point[1], 'mo', label="End point")
+            self.ax.plot(self.end_point[0], self.end_point[1], 'mo', label = "End point")
 
         # Redraw the plot with the marked points
         self.ax.legend()
@@ -221,25 +221,25 @@ class MaterialTestingApp:
 
         # Plot the original data if the checkbox is selected
         if self.show_original.get():
-            self.ax.plot(self.elongation, self.force, label="Original", color="blue", linestyle="--")
+            self.ax.plot(self.elongation, self.force, label = "Original", color = "blue", linestyle = "--")
         
         # Plot the smoothed data if the checkbox is selected
         if self.show_smoothed.get():
-            self.ax.plot(self.elongation, smoothed_force, label="Smoothed", color="red")
+            self.ax.plot(self.elongation, smoothed_force, label = "Smoothed", color = "red")
         
         # Plot the marked points on the updated plot (use smoothed data)
         if self.start_point:
             start_x = self.start_point[0]  # Elongation (x value)
             start_y = smoothed_force[np.abs(self.elongation - start_x).argmin()]  # Find corresponding smoothed force (y value)
-            self.ax.plot(start_x, start_y, 'go', label="Start Point")
+            self.ax.plot(start_x, start_y, 'go', label = "Start Point")
         if self.elastic_limit_point:
             elastic_x = self.elastic_limit_point[0]  # Elongation (x value)
             elastic_y = smoothed_force[np.abs(self.elongation - elastic_x).argmin()]  # Find corresponding smoothed force (y value)
-            self.ax.plot(elastic_x, elastic_y, 'yo', label="Elastic Limit")
+            self.ax.plot(elastic_x, elastic_y, 'yo', label = "Elastic Limit")
         if self.end_point:
             end_x = self.end_point[0]  # Elongation (x value)
             end_y = smoothed_force[np.abs(self.elongation - end_x).argmin()]  # Find corresponding smoothed force (y value)
-            self.ax.plot(end_x, end_y, 'mo', label="End Point")
+            self.ax.plot(end_x, end_y, 'mo', label = "End Point")
 
         # Set plot labels and title
         self.ax.set_xlabel("Elongation (mm)")
@@ -271,10 +271,10 @@ class MaterialTestingApp:
             slope = (force_end - force_start) / (elong_end - elong_start)
             slopes_1.append(slope)
         
-        # Calculate the median of slopes for Slope 1
+        # Calculate the median of slopes for slope 1
         slope_1 = np.median(slopes_1)
 
-        # Randomly define 101 spans for Slope 2 (from elastic_limit_point to end_point)
+        # Randomly define 101 spans for slope 2 (from elastic_limit_point to end_point)
         elastic_idx = np.abs(elongation_range - self.elastic_limit_point[0]).argmin()
         end_idx = np.abs(elongation_range - self.end_point[0]).argmin()
         
