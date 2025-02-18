@@ -80,10 +80,13 @@ If you loaded multiple .MTR files, you can navigate between curves using the "Ne
 ### Figure 13 - Plotting of the following curve after pressing "Next" button.
 <img width="1728" alt="Знімок екрана 2025-02-17 о 15 53 18" src="https://github.com/user-attachments/assets/cfcc25ec-c810-4df0-9019-9dca88826969" />
 
-The calculated results for each file are saved in an Excel sheet (Figure 14). The following data is recorded for each curve: filename; slope_1; slope_2; elongation_at_start_mm; force_at_start_N; elongation_at_elastic_limit_mm; force_at_elastic_limit_N; maximum_elongation_mm; maximum_force_N; toughness_N_mm.
+The calculated results for each file are saved in an Excel sheet (Figure 14). The following data is recorded for each curve: filename; slope_1; slope_2; elongation_at_start_mm; force_at_start_N; elongation_at_elastic_limit_mm; force_at_elastic_limit_N; maximum_elongation_mm; maximum_force_N; toughness_N_mm. Explanatory elongation-force curve is provided on Figure 15.
 
 ### Figure 14 - Example of uttcsr_output.xlsx sheet.
 <img width="1728" alt="Знімок екрана 2025-02-17 о 15 55 45" src="https://github.com/user-attachments/assets/6e07bdba-76ab-457f-a4a7-99889dc5b088" />
+
+### Figure 15 - Explanatory elongation-force curve with a calculated parameters visualized.
+![FIG_15](https://github.com/user-attachments/assets/71ca4cc0-ff39-47ff-a9d2-fdae3be05740)
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
